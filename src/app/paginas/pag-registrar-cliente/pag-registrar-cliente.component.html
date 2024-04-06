@@ -1,0 +1,66 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Registro del cliente</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <form [formGroup]="formulario">
+                <div class="col-8 col-offset-">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Nombre:</label>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="nombre" formControlName="nombre"
+                                    [class.is-invalid]="formulario.get('nombre')?.invalid">
+                            </div>
+                            <span class="text-danger" *ngIf="(formulario.get('nombre')?.invalid) && (formulario.get('nombre')?.touched || formulario.get('nombre')?.dirty)">El nombre es
+                                requerido.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Apellido:</label>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="apellido" formControlName="apellido"
+                                    [class.is-invalid]="formulario.get('apellido')?.invalid">
+                            </div>
+                            <span class="text-danger" *ngIf="(formulario.get('apellido')?.invalid) && (formulario.get('apellido')?.touched || formulario.get('apellido')?.dirty)">El apellido es
+                                requerido.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Contraseña:</label>
+                        <div class="col">
+                            <div class="input-group has-validation">
+                                <input type="password" class="form-control" name="password" formControlName="password"
+                                    [class.is-invalid]="formulario.get('password')?.invalid">
+                            </div>
+                            <span class="text-danger" *ngIf="(formulario.get('password')?.invalid) && (formulario.get('password')?.touched || formulario.get('password')?.dirty)">La contraseña es
+                                requerida.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span>¿Desea que estemos en contacto con usted? <input type="checkbox"
+                                formControlName="contacto" class="form-check-input" #contacto></span>
+                    </div>
+                    <div class="mb-3" *ngIf="contacto.checked">
+                        <label for="correo" class="form-label">Dirección de correo</label>
+                        <input type="email" class="form-control" id="correo" formControlName="email">
+                    </div>
+                    <div class="mb-3" *ngIf="contacto.checked">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="number" class="form-control" id="telefono" formControlName="telefono">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <button class="btn btn-primary" (click)="guardar()">Grabar</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class='btn btn-outline-secondary' (click)="irAlInicio()">Volver a la página de inicio</button>
+    </div>
+</div>

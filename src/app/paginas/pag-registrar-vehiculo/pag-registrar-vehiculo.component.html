@@ -1,0 +1,87 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Registro del vehículo</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <form [formGroup]="formulario">
+                <div class="col-8 col-offset-">
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Código:</label>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="codigo" formControlName="codigo" [class.is-invalid]="formulario.get('codigo')?.invalid">
+                            </div>
+                            <span class="text-danger" *ngIf="(formulario.get('codigo')?.invalid) && (formulario.get('codigo')?.touched || formulario.get('codigo')?.dirty)">El código es requerido.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Marca:</label>
+                        <div class="col">
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" name="marca" formControlName="marca" [class.is-invalid]="formulario.get('marca')?.invalid">
+                            </div>
+                            <span class="text-danger" *ngIf="(formulario.get('marca')?.invalid) && (formulario.get('marca')?.touched || formulario.get('marca')?.dirty)">La marca es requerida.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Modelo:</label>
+                        <div class="col">
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" name="modelo" formControlName="modelo" [class.is-invalid]="formulario.get('modelo')?.invalid">
+                            </div>
+                            <span class="text-danger" *ngIf="(formulario.get('modelo')?.invalid) && (formulario.get('modelo')?.touched || formulario.get('modelo')?.dirty)">El modelo es requerido.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Año:</label>
+                        <div class="col-sm-3">
+                            <div class="input-group has-validation">
+                                <input type="number" class="form-control" name="anio" formControlName="anio" [class.is-invalid]="formulario.get('anio')?.invalid">
+                            </div>
+                            <span class="text-danger" *ngIf="(formulario.get('anio')?.invalid) && (formulario.get('anio')?.touched || formulario.get('anio')?.dirty)">El año es requerido.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Kilometraje:</label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" name="kilometraje"
+                                [class.is-invalid]="formulario.get('kilometraje')?.invalid" formControlName="kilometraje">
+                            <span class="text-danger" *ngIf="(formulario.get('kilometraje')?.invalid) && (formulario.get('kilometraje')?.touched || formulario.get('kilometraje')?.dirty)">El kilometraje debe ser mayor o igual a cero.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Precio:</label>
+                        <div class="col-sm-3">
+                            <div class="input-group has-validation">
+                                <input type="number" class="form-control" name="precio"
+                                    formControlName="precio" [class.is-invalid]="formulario.get('precio')?.invalid">
+                            </div>
+                            <span class="text-danger" *ngIf="(formulario.get('precio')?.invalid) && (formulario.get('precio')?.touched || formulario.get('precio')?.dirty)">El precio es requerido.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Foto:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" name="foto" formControlName="foto">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Calificación:</label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" name="calificacion"
+                                formControlName="calificacion"
+                                [class.is-invalid]="formulario.get('calificacion')?.invalid">
+                            <span class="text-danger" *ngIf="(formulario.get('calificacion')?.invalid) && (formulario.get('calificacion')?.touched || formulario.get('calificacion')?.dirty)">La calificación debe estar entre 0 y 5.</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <button class="btn btn-primary" (click)="grabar()">Grabar</button>
+            </div>
+        </div>
+    </div>
+</div>

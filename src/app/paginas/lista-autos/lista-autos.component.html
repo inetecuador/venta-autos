@@ -1,0 +1,86 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Lista de autos</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label> Filtrar por: </label><input type="text" placeholder="Marca" [(ngModel)]="filtro"
+                (input)="consultarVehiculos()">
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+                FILTRADO POR: {{filtro}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-white">
+                    <thead>
+                        <tr>
+                            <th>
+                                <button class="btn btn-primary" (click)="mostrarImagen()"
+                                    [innerText]="mostrarImagenes ? 'Ocultar Imágenes' :'Mostrar imágenes'"></button>
+                            </th>
+                            <th>Código</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Año</th>
+                            <th>Color</th>
+                            <th>Kilometraje</th>
+                            <th>Precio</th>
+                            <th>Calificación</th>
+                            <th>
+                                <button [routerLink]="['/registrarVehiculo']" class="btn btn-success">Nuevo</button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of listaVehiculos">
+                            <td>
+                                <img [src]="item.foto" style="width: 50px;"
+                                    *ngIf="this.mostrarImagenes && item.foto!=null">
+                            </td>
+                            <td>
+                                <a [routerLink]="['/vehiculo/', item.codigo]">{{item.codigo}}</a>
+                            </td>
+                            <td>{{item.marca}}</td>
+                            <td>{{item.modelo | lowercase | aEspacio:'-'}}</td>
+                            <td>{{item.anio | number}}</td>
+                            <td>{{item.color}}</td>
+                            <td>{{item.kilometraje | number}}</td>
+                            <td>{{item.precio | currency}}</td>
+                            <td>
+                                <app-calificacion [calificacion]="item.calificacion"></app-calificacion>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary"
+                                    [routerLink]="['/editarVehiculo/'+item.codigo]">Editar</button>
+                                &nbsp;
+                                <button type="button" class="btn btn-warning"
+                                    (click)="eliminar(item.codigo)">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="12">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" (click)="anterior()">Atrás</a></li>
+                                        <li class="page-item" *ngFor="let pagina of listaPaginas"
+                                            [ngClass]="{'active': pagina === page}"><a class="page-link"
+                                                (click)="cargarPagina(pagina)">{{pagina}}</a></li>
+                                        <li class="page-item"><a class="page-link" (click)="siguiente()">Siguiente</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

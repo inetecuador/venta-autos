@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header fs-2">
+        Vehículo: {{vehiculo?.marca}} {{vehiculo?.modelo}}
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-5">
+                    <img src="{{vehiculo?.foto}}" class="img-thumbnail">
+                </div>
+                <div class="col-1">
+                </div>
+                <div class="col-6">
+                    <div>
+                        <div>
+                            <h5>Código:</h5> {{vehiculo?.codigo}}
+                        </div>
+                        <div>
+                            <h5>Marca:</h5> {{vehiculo?.marca}}
+                        </div>
+                        <div>
+                            <h5>Modelo:</h5> {{vehiculo?.modelo}}
+                        </div>
+                        <div>
+                            <h5>Color:</h5> {{vehiculo?.color}}
+                        </div>
+                        <div>
+                            <h5>Año:</h5> {{vehiculo?.anio | number}}
+                        </div>
+                        <div>
+                            <h5>Kilometraje:</h5> {{vehiculo?.kilometraje | number}}
+                        </div>
+                        <div>
+                            <h5>Precio:</h5> {{vehiculo?.precio | currency}}
+                        </div>
+                        <div>
+                            <h5>Calificación:</h5>
+                            <app-calificacion [calificacion]="vehiculo?.calificacion"></app-calificacion>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
